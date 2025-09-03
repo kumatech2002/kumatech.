@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Kumatech (Orkuma James)</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #0c0e2a 0%, #1e223f 100%);
+      color: #e0e0ff;
+      line-height: 1.6;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 40px;
+      padding: 15px;
+      background: rgba(16, 18, 46, 0.8);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      animation: fadeIn 1s ease;
+    }
+    
+    nav a {
+      color: #7ae4ff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      border: 1px solid transparent;
+    }
+    
+    nav a:hover {
+      background: rgba(47, 128, 237, 0.2);
+      border-color: #2f80ed;
+      transform: translateY(-2px);
+    }
+    
+    nav a:last-child {
+      background: linear-gradient(45deg, #2f80ed, #6b7dd3);
+      color: #fff;
+      font-weight: bold;
+    }
+    
+    nav a:last-child:hover {
+      background: linear-gradient(45deg, #6b7dd3, #2f80ed);
+      transform: translateY(-2px) scale(1.05);
+    }
+    
+    /* Main Content */
+    .projects-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 50px;
+      animation: slideUp 1s ease;
+    }
+    
+    .profile-section {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .profile-img {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #2f80ed;
+      box-shadow: 0 10px 30px rgba(47, 128, 237, 0.4);
+      transition: all 0.5s ease;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .profile-img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 15px 40px rgba(47, 128, 237, 0.6);
+    }
+    
+    .projects-section {
+      flex: 2;
+      min-width: 300px;
+    }
+    
+    h1 {
+      color: #7ae4ff;
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+      text-align: center;
+      text-shadow: 0 2px 10px rgba(122, 228, 255, 0.4);
+    }
+    
+    h2 {
+      color: #7ae4ff;
+      margin: 25px 0 15px;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #2f80ed;
+      padding-bottom: 8px;
+    }
+    
+    p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    .project-card {
+      background: rgba(16, 18, 46, 0.8);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(47, 128, 237, 0.2);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(47, 128, 237, 0.3);
+      border-color: #2f80ed;
+    }
+    
+    .project-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    
+    .project-details {
+      padding: 20px;
+    }
+    
+    .project-title {
+      color: #7ae4ff;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+    
+    .project-description {
+      color: #c0c0ff;
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+    
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+    
+    .tech-tag {
+      background: rgba(47, 128, 237, 0.2);
+      color: #7ae4ff;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+    
+    .project-links {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: #7ae4ff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .project-link:hover {
+      color: #2f80ed;
+      transform: translateY(-2px);
+    }
+    
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 30px;
+      background: rgba(16, 18, 46, 0.8);
+      border-radius: 16px;
+      margin-top: 40px;
+      backdrop-filter: blur(10px);
+      animation: fadeIn 1.5s ease;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 25px 0;
+    }
+    
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      color: white;
+      font-size: 20px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .social-btn::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #2f80ed, #6b7dd3);
+      border-radius: 50%;
+      z-index: -1;
+      transition: all 0.3s ease;
+    }
+    
+    .social-btn:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 5px 15px rgba(47, 128, 237, 0.4);
+    }
+    
+    .social-btn:hover::before {
+      transform: scale(1.1);
+    }
+    
+    .linkedin::before { background: linear-gradient(45deg, #0077b5, #00a0dc); }
+    .twitter::before { background: linear-gradient(45deg, #1da1f2, #009ff5); }
+    .github::before { background: linear-gradient(45deg, #333, #6e5494); }
+    .email::before { background: linear-gradient(45deg, #ea4335, #d14836); }
+    .facebook::before { background: linear-gradient(45deg, #4267B2, #3b5998); }
+    .instagram::before { background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045); }
+    .whatsapp::before { background: linear-gradient(45deg, #25d366, #128c7e); }
+    
+    .copy {
+      margin-top: 20px;
+      color: #7ae4ff;
+      font-size: 0.9rem;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+      from { 
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .projects-content {
+        flex-direction: column;
+        gap: 30px;
+      }
+      
+      .profile-img {
+        width: 220px;
+        height: 220px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.6rem;
+      }
+      
+      nav a {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .container {
+        padding: 10px;
+      }
+      
+      .profile-img {
+        width: 180px;
+        height: 180px;
+      }
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      h2 {
+        font-size: 1.4rem;
+      }
+      
+      .social-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+      <a href="Orkuma_James_resume.pdf" download>📄 Resume</a>
+    </nav>
+    
+    <h1>My Cybersecurity Projects</h1>
+    
+    <div class="projects-content">
+      <div class="profile-section">
+        <!-- Placeholder for profile image - replace with your actual image -->
+        <img src="image/image-removebg-preview.png" alt="Orkuma James (Kumatech)" class="profile-img">
+        <h2>Kumatech</h2>
+        <p>Cybersecurity & Networking Specialist</p>
+      </div>
+      
+      <div class="projects-section">
+        <div class="projects-grid">
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Network Security Project" class="project-img">
+            <div class="project-details">
+              <h3 class="project-title">Enterprise Network Defense System</h3>
+              <p class="project-description">Designed and implemented a comprehensive network security solution with firewall configuration, IDS/IPS, and real-time monitoring.</p>
+              <div class="project-tech">
+                <span class="tech-tag">Cisco</span>
+                <span class="tech-tag">SIEM</span>
+                <span class="tech-tag">Firewall</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Malware Analysis Project" class="project-img">
+            <div class="project-details">
+              <h3 class="project-title">Advanced Malware Analysis Toolkit</h3>
+              <p class="project-description">Developed a custom toolkit for analyzing and reverse engineering malware samples with behavioral analysis capabilities.</p>
+              <div class="project-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">VMware</span>
+                <span class="tech-tag">Wireshark</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vulnerability Scanner Project" class="project-img">
+            <div class="project-details">
+              <h3 class="project-title">Automated Vulnerability Scanner</h3>
+              <p class="project-description">Created a custom vulnerability assessment tool that scans networks and systems for security weaknesses and generates detailed reports.</p>
+              <div class="project-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Nmap</span>
+                <span class="tech-tag">Nessus</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Incident Response Project" class="project-img">
+            <div class="project-details">
+              <h3 class="project-title">Incident Response Framework</h3>
+              <p class="project-description">Built a comprehensive incident response plan with automated alerting, analysis playbooks, and recovery procedures.</p>
+              <div class="project-tech">
+                <span class="tech-tag">SOAR</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Splunk</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <p>Connect with me:</p>
+      <div class="social-links">
+        <a href="https://linkedin.com/in/orkuma-james-870a3a318" target="_blank" class="social-btn linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://x.com/orkuma2002" target="_blank" class="social-btn twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://github.com/" target="_blank" class="social-btn github">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="mailto:orkumajames6@gmail.com" class="social-btn email">
+          <i class="far fa-envelope"></i>
+        </a>
+        <a href="https://facebook.com/share/1957KLHZvs/" target="_blank" class="social-btn facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://instagram.com/kuma_tech2002?igsh=MTdlb3o1ejd0djAzeA==" target="_blank" class="social-btn instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https:/wa.me/qr/KF4UIKDDK6GIM1" target="_blank" class="social-btn whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+      <p class="copy">&copy; 2025 Orkuma James (Kumatech) | All Rights Reserved</p>
+    </footer>
+  </div>
+
+  <script>
+    // Add subtle animations to project cards when they come into view
+    document.addEventListener('DOMContentLoaded', function() {
+      const projectCards = document.querySelectorAll('.project-card');
+      
+      projectCards.forEach((card, index) => {
+        // Add delay based on index for staggered animation
+        card.style.animationDelay = `${index * 0.2}s`;
+        card.style.animation = 'slideUp 0.5s ease forwards';
+        card.style.opacity = '0';
+      });
+      
+      // Animate social buttons with delay
+      const socialButtons = document.querySelectorAll('.social-btn');
+      socialButtons.forEach((btn, index) => {
+        btn.style.animationDelay = `${index * 0.1}s`;
+        btn.style.animation = 'slideUp 0.5s ease forwards';
+        btn.style.opacity = '0';
+      });
+    });
+  </script>
+</body>
+</html>
